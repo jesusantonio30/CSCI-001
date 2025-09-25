@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        ".gitignore": "ignore",
+        "iostream": "cpp",
+        "iomanip": "cpp",
+        "ios": "cpp"
+    }
+}
