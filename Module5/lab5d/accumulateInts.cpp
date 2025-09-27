@@ -5,6 +5,7 @@ using namespace std;
 int main() {
 
     int beginningInt, endingInt, sum = 0;
+    char restart;
 
     cout << "\n========== Accumulate Integers ==========" << endl;
 
@@ -14,33 +15,36 @@ int main() {
     cout << "   e.g. user wants to add the first FIVE integers: " << endl;
     cout << "   ->   1+2+3+4+5 = 15" << endl;
 
-    cout << "\nEnter integer to start from: ";
-    cin >> beginningInt;
+    do {
+        sum = 0;
+        cout << "\nEnter integer to start from: ";
+        cin >> beginningInt;
 
-    cout << "Enter ending integer: ";
-    cin >> endingInt;
+        cout << "Enter ending integer: ";
+        cin >> endingInt;
 
-    if (beginningInt > endingInt) {
-        for (int i = beginningInt; i >= endingInt; i--) {
-            sum += i;
-            if (i == endingInt) {
+        if (beginningInt > endingInt) {
+            for (int i = beginningInt; i >= endingInt; i--) {
+                sum += i;
                 cout << i;
-            } else {
-                cout << i << " + ";
+                if (i != endingInt) cout << " + ";
+            }
+        } else {
+            for (int i = beginningInt; i <= endingInt; i++) {
+                sum += i;
+                cout << i;
+                if (i != endingInt) cout << " + ";
             }
         }
-    } else {
-        for (int i = beginningInt; i <= endingInt; i++) {
-            sum += i;
-            if (i == endingInt) {
-                cout << i;
-            } else {
-                cout << i << " + ";
-            }
-        }
-    }
 
-    cout << " = " << sum << endl;
+        cout << " = " << sum << endl;
+
+        cout << "\nRestart? (y/n): ";
+        cin >> restart;
+
+
+        
+    } while (tolower(restart) == 'y');
 
 
 
