@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
 
-    int beginningInt, endingInt, sum = 0;
+    int beginningInt, intToAdd, endingInt, sum = 0;
     char restart;
 
     cout << "\n========== Accumulate Integers ==========" << endl;
@@ -17,11 +17,15 @@ int main() {
 
     do {
         sum = 0;
+
+
         cout << "\nEnter integer to start from: ";
         cin >> beginningInt;
 
-        cout << "Enter ending integer: ";
-        cin >> endingInt;
+        cout << "Enter amount of integers to add: ";
+        cin >> intToAdd;
+
+        endingInt = beginningInt + intToAdd;
 
         if (beginningInt > endingInt) {
             for (int i = beginningInt; i >= endingInt; i--) {
