@@ -8,20 +8,30 @@ int factorial(int num);
 
 int main() {
 
-    int t, n;
-    double sum = 1;
+    char runAgain;
 
-    cout << "Enter for t: ";
-    cin >> t;
+    cout << "\n==== Calculate Powers of e ====\n" << endl;
 
-    cout << "Enter for n: ";
-    cin >> n;
+    do {
+        int t, n;
+        double sum = 1;
 
-    for (int i = 1; i <= n; i++) {
-        sum += ( pow(t, i)/ factorial(i) );
-    }
+        cout << "Enter for t: ";
+        cin >> t;
 
-    cout << "e^" << t << " = " << fixed << setprecision(3) << sum << endl;
+        cout << "Enter for n: ";
+        cin >> n;
+
+        for (int i = 1; i <= n; i++) {
+            sum += ( pow(t, i)/ factorial(i) );
+        }
+
+        cout << "e^" << t << " = " << fixed << setprecision(3) << sum << endl;
+
+        cout << "Run Again? (y/n): ";
+        cin >> runAgain;
+
+    } while (tolower(runAgain) == 'y');
 
     
     return 0;
