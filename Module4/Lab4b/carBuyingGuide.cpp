@@ -20,7 +20,7 @@ int main() {
             } else {
                 cout << "Buy a minivan" << endl;
             }
-    } else if (userAge >= 40) {
+    } else {
         cout << "=== Life stage 2 ===\n" << endl;
             if (userAge < 55) {
                 cout << "Buy a Corvette" << endl;
