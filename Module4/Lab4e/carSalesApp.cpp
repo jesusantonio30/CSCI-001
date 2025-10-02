@@ -21,25 +21,37 @@ int main() {
     cin >> salesAmt;
     cin.ignore();
 
+    cout << fixed << setprecision(2);
+
     cout << "\n--- Commission Summary ---\n";
     if (jobRole == "salesperson") {
         cout << "Job Role: Sales Person" << endl;
+        float rate;
         if (salesAmt <= 12000) {
-            cout << commCalc(salesAmt, 2.1) << endl;
-        } else if (salesAmt > 12000 & salesAmt <= 22000) {
-            cout << commCalc(salesAmt, 2.9) << endl;
+            rate = 2.1;
+        } else if (salesAmt > 12000 && salesAmt <= 22000) {
+            rate = 2.9;
         } else {
-            cout << commCalc(salesAmt, 3.2) << endl;
+            rate = 3.2;
         }
+        float comm = commCalc(salesAmt, rate);
+        cout << "Commission Rate: " << rate << "%" << endl;
+        cout << "Commission Amount: $" << comm << endl;
+        cout << "\nTotal (Sales + Commission): $" << (salesAmt + comm) << endl;
     } else {
-        cout << "Job Role: Loan Officer\n" << endl;
+        cout << "Job Role: Loan Officer" << endl;
+        float rate;
         if (salesAmt <= 12000) {
-            cout << commCalc(salesAmt, 0.5) << endl;
-        } else if (salesAmt > 12000 & salesAmt <= 22000) {
-            cout << commCalc(salesAmt, 0.7) << endl;
+            rate = 0.5;
+        } else if (salesAmt > 12000 && salesAmt <= 22000) {
+            rate = 0.7;
         } else {
-            cout << commCalc(salesAmt, 1.0) << endl;
+            rate = 1.0;
         }
+        float comm = commCalc(salesAmt, rate);
+        cout << "Commission Rate: " << rate << "%" << endl;
+        cout << "Commission Amount: $" << comm << endl;
+        cout << "\nTotal (Sales + Commission): $" << (salesAmt + comm) << endl;
     }
 
     cout << "\n=====================================\n" << endl;
@@ -47,10 +59,5 @@ int main() {
 }
 
 float commCalc(float dollar, float rate) {
-    cout << fixed << setprecision(2);
-    cout << "Commission Rate: " << rate << "%" << endl;
-    cout << "Commission Amount: $" << rate / 100 * dollar << '\n';
-    cout << "\nTotal (Sales + Commission): $";
-
-    return rate / 100 * dollar + dollar;
+    return rate / 100 * dollar;
 }
