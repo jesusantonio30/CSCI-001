@@ -18,17 +18,19 @@ int main() {
         cout << "Enter c: ";
         cin >> c;
 
+        cout << '\n';
+
         if (b < 1) {
-            cout << "Your equation: " << a << "x - " << -1 * b << " = " << c << endl;
+            cout << "Your equation:\t" << a << "x - " << -1 * b << " = " << c << endl;
         } else {
-            cout << "Your equation: " << a << "x + " << b << " = " << c << endl;
+            cout << "Your equation:\t" << a << "x + " << b << " = " << c << endl;
         }
 
-        cout << "First step: " << a << "x = " << c - b << endl;
+        cout << "First step:\t" << a << "x = " << c - b << endl;
 
-        cout << "Second step: " << "x = " << (c - b) / a << endl;
+        cout << "Second step:\t" << "x = " << (c - b) / a << endl;
 
-        cout << "Run again? (y/n): ";
+        cout << "\nWould you like to run again (y or n)? ";
         cin >> runAgain;
 
     } while (runAgain == 'y');
