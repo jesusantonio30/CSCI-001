@@ -4,26 +4,34 @@ using namespace std;
 
 int main() {
 
-    float a, b, c;
+    char runAgain;
 
-    cout << "Enter a: ";
-    cin >> a;
+    do {
+        float a, b, c;
 
-    cout << "Enter b: ";
-    cin >> b;
+        cout << "Enter a: ";
+        cin >> a;
 
-    cout << "Enter c: ";
-    cin >> c;
+        cout << "Enter b: ";
+        cin >> b;
 
-    if (b < 1) {
-        cout << "Your equation: " << a << "x - " << -1 * b << " = " << c << endl;
-    } else {
-        cout << "Your equation: " << a << "x + " << b << " = " << c << endl;
-    }
+        cout << "Enter c: ";
+        cin >> c;
 
-    cout << "First step: " << a << "x = " << c - b << endl;
+        if (b < 1) {
+            cout << "Your equation: " << a << "x - " << -1 * b << " = " << c << endl;
+        } else {
+            cout << "Your equation: " << a << "x + " << b << " = " << c << endl;
+        }
 
-    cout << "Second step: " << "x = " << (c - b) / a << endl;
+        cout << "First step: " << a << "x = " << c - b << endl;
+
+        cout << "Second step: " << "x = " << (c - b) / a << endl;
+
+        cout << "Run again? (y/n): ";
+        cin >> runAgain;
+
+    } while (runAgain == 'y');
 
     return 0;
 }
