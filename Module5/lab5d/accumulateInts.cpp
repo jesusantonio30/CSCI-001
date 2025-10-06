@@ -27,17 +27,18 @@ int main() {
 
         endingInt = beginningInt + intToAdd;
 
-        if (beginningInt > endingInt) {
-            for (int i = beginningInt; i >= endingInt; i--) {
+    
+        if (beginningInt == 0) {
+            for (int i = beginningInt; i < endingInt; i++) {
                 sum += i;
                 cout << i;
-                if (i != endingInt) cout << " + ";
+                if (i != (endingInt - 1)) cout << " + ";
             }
         } else {
-            for (int i = beginningInt; i <= endingInt; i++) {
+            for (int i = beginningInt; i < endingInt; i++) {
                 sum += i;
                 cout << i;
-                if (i != endingInt) cout << " + ";
+                if (i != (endingInt - 1)) cout << " + ";
             }
         }
 
