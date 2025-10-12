@@ -11,25 +11,33 @@ int main() {
 
     srand(time(0));
     int randNum, i;
+    char runAgain;
 
     int size = 20;
     int randomNumbers[size];
 
-    for (i = 0; i < size; i++) {
-        randNum = 1 + rand() % 1000;
-        randomNumbers[i] = randNum;
-    }
-
-    for (i = 0; i < size; i++) {
-        if (i != size - 1 ){
-                cout << randomNumbers[i] << ", ";
-            } else {
-                cout << randomNumbers[i] << endl;
+    do {
+            for (i = 0; i < size; i++) {
+                randNum = 1 + rand() % 1000;
+                randomNumbers[i] = randNum;
             }
-    }
 
-    cout << "Biggest integer in array: " << maxInteger(randomNumbers, size) << endl;
-    cout << "Smallest integer in array: " << minInteger(randomNumbers, size) << endl;
+            cout << "\nArray: ";
+
+            for (i = 0; i < size; i++) {
+                if (i != size - 1 ){
+                        cout << randomNumbers[i] << ", ";
+                    } else {
+                        cout << randomNumbers[i] << endl;
+                    }
+            }
+
+            cout << "\nBiggest integer in array: " << maxInteger(randomNumbers, size) << endl;
+            cout << "Smallest integer in array: " << minInteger(randomNumbers, size) << endl;
+
+            cout << "\n\nWant to run again? (y/n): ";
+            cin >> runAgain;
+    } while (runAgain == 'y');
 
     return 0;
 }
