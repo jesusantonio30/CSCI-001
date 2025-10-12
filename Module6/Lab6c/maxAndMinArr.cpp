@@ -1,4 +1,54 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int maxInteger( int *a, int size );
+int minInteger( int *a, int size );
+
 int main() {
 
+    srand(time(0));
+    int randNum, i;
+
+    int size = 20;
+    int randomNumbers[size];
+
+    for (i = 0; i < size; i++) {
+        randNum = 1 + rand() % 1000;
+        randomNumbers[i] = randNum;
+    }
+
+    for (i = 0; i < size; i++) {
+        if (i != size - 1 ){
+                cout << randomNumbers[i] << ", ";
+            } else {
+                cout << randomNumbers[i] << endl;
+            }
+    }
+
+    cout << "Biggest integer in array: " << maxInteger(randomNumbers, size) << endl;
+    cout << "Smallest integer in array: " << minInteger(randomNumbers, size) << endl;
+
     return 0;
+}
+
+// accessing value stored at address of a; which is the first element of array passed in as an argument; otherwise known as dereferencing a pointer
+int maxInteger( int *a, int size ) {
+    int max = *a, i;
+
+    for (i = 0; i < size; i++) {
+        if (max < a[i]) max = a[i];
+    }
+    return max;
+}
+
+int minInteger( int *a, int size ) {
+    int min = *a, i;
+
+    for (i = 0; i < size; i++) {
+        if (min > a[i]) min = a[i];
+    }
+    return min;
 }
