@@ -10,7 +10,7 @@ int main() {
     const int size = 5;
     double data[size];
 
-    cout << "\n---------- Find The Average of Five Values ----------\n" << endl;;
+    cout << "\n---------- Find The Average of " << size << " Values ----------\n" << endl;;
 
     int i;
 
