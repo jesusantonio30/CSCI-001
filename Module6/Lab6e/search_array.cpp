@@ -10,6 +10,8 @@ void clearInputBuffer();
 
 int main() {
 
+    int charCount;
+
     srand(time(0));
 
     int size = 50;
@@ -51,7 +53,7 @@ void printArrContents(char *arr, int size) {
 }
 
 void countCharAppeance(char charChoice, int size, char *arr) {
-    int charCount = 0;
+    charCount = 0;
     for (int i = 0; i < size; i++){
         if (*(arr + i) == charChoice) {
             charCount++;
