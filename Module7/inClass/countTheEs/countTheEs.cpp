@@ -4,12 +4,13 @@
 
 using namespace std;
 
+int countChars (string str, string uChar);
+
 int main() {
 
     char runAgain;
     string userString;
     string userChar;
-    int eCounter = 0;
 
     do {
         cout << "Enter a string, any string: ";
@@ -18,19 +19,27 @@ int main() {
         cout << "Enter a character to look for: ";
         getline(cin, userChar);
 
-        for (int i = 0; i < userString.size(); i++) {
-            if (tolower(userString[i]) == userChar[0]) {
-                eCounter++;
-            }
-        }
+        
 
-        cout << "There are " << eCounter << ' ' << userChar << " in your string." << endl;
+        cout << "There are " << countChars(userString, userChar) << ' ' << userChar << " in your string." << endl;
 
         cout << "Enter another string? (y/n): ";
         cin >> runAgain;
 
         cin.ignore();
-    } while (runAgain == 'y');
+    } while (tolower(runAgain) == 'y');
 
     return 0;
+}
+
+int countChars (string str, string uChar) {
+    int eCounter = 0;
+
+    for (int i = 0; i < str.size(); i++) {
+        if (tolower(str[i]) == tolower(uChar[0])) {
+            eCounter++;
+        }
+    }
+
+    return eCounter;
 }
