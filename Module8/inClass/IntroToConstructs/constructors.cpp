@@ -5,33 +5,23 @@ struct Point {
     double a, b;
 
     void print();
-    int absolute_value();
-    double distance();
+    Point(double mA = 0.0, double mB = 0.0);
 };
-int numOfPoints = 7;
-double incA = 2;
-double startA = -6;
-
-int cubed(int val);
 
 int main() {
 
-    Point points;
+    Point pt;
 
-    for (int i = 0; i < numOfPoints; i++) {
-        points.a = incA * i + startA;
-        points.b = cubed(points.a);
-    }
-
-    points.print();
+    pt.print();
 
     return 0;
 }
 
-void Point::print() {
-    cout << "( " << a << ", " << b << " )" << endl; 
+Point::Point(double mA, double mB) {
+    a = mA;
+    b = mB;
 }
 
-int cubed(int val) {
-    return val * val * val;
+void Point::print() {
+    cout << "( " << a << ", " << b << " )" << endl;
 }
