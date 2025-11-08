@@ -8,19 +8,20 @@ struct Student {
     string lastName;
     string school;
     float gpa;
-    string id;
+    int id;
 
     // Methods
-    void capitalize(Student& arg);
-    void printStudent(Student arg);
+    void capitalize();
+    void printStudent();
+    void addToGPA(double arg);
 };
 
 int main() {
 
-    Student studentObj;
-
     int size = 3;
     Student studentArr[size];
+
+    int tempId;
 
     for (int i = 0; i < size; i++) {
 
@@ -32,8 +33,15 @@ int main() {
         cout << "\nEnter student's last name: ";
         getline(cin, studentArr[i].lastName);
 
-        cout << "\nEnter student's ID: ";
-        getline(cin, studentArr[i].id);
+        cout << "\nEnter student's ID (xxxxx): ";
+        cin >> tempId;
+
+            while (tempId < 10000 || tempId > 99999) {
+                cout << "Enter a 5-digit ID (10000-99999): ";
+                cin >> tempId;
+            }
+            studentArr[i].id = tempId;
+            cin.ignore();
 
         cout << "\nEnter student's school: ";
         getline(cin, studentArr[i].school);
@@ -49,46 +57,51 @@ int main() {
     cout << "\n\n======== Student Information ========" << endl;
 
     for (int i = 0; i < size; i++) {
-        studentObj.capitalize(studentArr[i]);
+        studentArr[i].capitalize();
         cout << "\nStudent " << i + 1 << ": " << endl;
-        studentObj.printStudent(studentArr[i]);
+        studentArr[i].printStudent();
         cout << "\n=================================" << endl;
     }
 
     return 0;
 }
 
-void Student::printStudent(Student arg) {
-    cout << "\nFirst Name: \t" << arg.firstName << endl;
-    cout << "\nLast Name: \t" << arg.lastName << endl;
-    cout << "\nID: \t\t" << arg.id << endl;
-    cout << "\nSchool: \t"  << arg.school << endl;
-    cout << "\nGPA: \t\t" << arg.gpa << endl;
+void Student::printStudent() {
+    cout << "\nFirst Name: \t" << firstName << endl;
+    cout << "\nLast Name: \t" << lastName << endl;
+    cout << "\nID: \t\t" << id << endl;
+    cout << "\nSchool: \t"  << school << endl;
+    cout << "\nGPA: \t\t" << gpa << endl;
 }
 
-void Student::capitalize(Student& arg) {
+void Student::capitalize() {
 
     // & is necessary since it doesn't create a copy of a value. Instead, it contains the address in memory where the variable or value is located in. 
     // If declared using a type, the variable name is just another alias of the original variable.
     // In this case, arg is an alias for my studentArr variable containing an array.
     // This allows us to only pass 8 bytes (size of an address) rather than whatever the size of a copy may be. Much more efficient.
 
-    for (int i = 0; i < arg.firstName.size(); i++) {
-        arg.firstName[0] = toupper(arg.firstName[0]);
-        if (arg.firstName[i] == ' ') {
-            arg.firstName[i + 1] = toupper(arg.firstName[i + 1]);
+    firstName[0] = toupper(firstName[0]);
+    lastName[0] = toupper(lastName[0]);
+    school[0] = toupper(school[0]);
+    
+    for (int i = 0; i < firstName.size(); i++) {
+        if (firstName[i] == ' ') {
+            firstName[i + 1] = toupper(firstName[i + 1]);
         }
     }
-    for (int i = 0; i < arg.lastName.size(); i++) {
-        arg.lastName[0] = toupper(arg.lastName[0]);
-        if (arg.lastName[i] == ' ') {
-            arg.lastName[i + 1] = toupper(arg.lastName[i + 1]);
+    for (int i = 0; i < lastName.size(); i++) {
+        if (lastName[i] == ' ') {
+            lastName[i + 1] = toupper(lastName[i + 1]);
         }
     }
-    for (int i = 0; i < arg.school.size(); i++) {
-        arg.school[0] = toupper(arg.school[0]);
-        if (arg.school[i] == ' ') {
-            arg.school[i + 1] = toupper(arg.school[i + 1]);
+    for (int i = 0; i < school.size(); i++) {
+        if (school[i] == ' ') {
+            school[i + 1] = toupper(school[i + 1]);
         }
     }
+}
+
+void Student::addToGPA(double arg) {
+    gpa += arg;
 }
