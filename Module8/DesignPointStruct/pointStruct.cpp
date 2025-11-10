@@ -1,37 +1,71 @@
 #include <iostream>
+#include <cmath>
+#include <vector>
+
 using namespace std;
 
+// Structs --------------------------------------
+
 struct Point {
-    double a, b;
+    double x, y;
 
+    Point(double mX = 0.0, double mY = 0.0);
     void print();
-    int absolute_value();
-    double distance();
+    int absoluteValue(Point a);
+    double distance(Point a, Point b);
 };
-int numOfPoints = 7;
-double incA = 2;
-double startA = -6;
 
-int cubed(int val);
+// Function Prototypes --------------------------
+
+double cubed(double val);
+
+void printPoints(vector<Point>& arg);
 
 int main() {
 
-    Point points;
+    Point a, b;
 
-    for (int i = 0; i < numOfPoints; i++) {
-        points.a = incA * i + startA;
-        points.b = cubed(points.a);
+    vector<Point> points;
+
+    int start = -6;
+    int end = 6;
+    int incr = 2;
+
+    for (int i = start; i <= end; i += incr) {
+        Point point( i, cubed(i) );
+        points.push_back(point);
     }
 
-    points.print();
+    printPoints(points);
 
     return 0;
 }
 
-void Point::print() {
-    cout << "( " << a << ", " << b << " )" << endl; 
+// Function Implementations ---------------------
+
+Point::Point(double mX, double mY) {
+    x = mX;
+    y = mY;
 }
 
-int cubed(int val) {
-    return val * val * val;
+void Point::print() {
+    cout << "( " << x << ", " << y << " )" << endl; 
 }
+
+int Point::absoluteValue(Point a) {
+    return sqrt(pow(x, 2) + pow(y, 2));
+}
+
+double Point::distance(Point a, Point b) {
+    return sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2));
+}
+
+    double cubed(double val) {
+        return val * val * val;
+    }
+
+    void printPoints(vector<Point>& arg) {
+        for (int i = 0; i < arg.size(); i++) {
+            arg[i].print();
+        }
+    }
