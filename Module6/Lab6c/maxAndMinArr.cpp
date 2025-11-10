@@ -4,8 +4,8 @@
 
 using namespace std;
 
-int maxInteger( int *a, int size );
-int minInteger( int *a, int size );
+int maxInteger( int a[], int size );
+int minInteger( int a[], int size );
 
 int main() {
 
@@ -42,9 +42,8 @@ int main() {
     return 0;
 }
 
-// accessing value stored at address of a; which is the first element of array passed in as an argument; otherwise known as dereferencing a pointer
-int maxInteger( int *a, int size ) {
-    int max = *a, i;
+int maxInteger( int a[], int size ) {
+    int max = a[0], i;
 
     for (i = 0; i < size; i++) {
         if (max < a[i]) max = a[i];
@@ -52,8 +51,8 @@ int maxInteger( int *a, int size ) {
     return max;
 }
 
-int minInteger( int *a, int size ) {
-    int min = *a, i;
+int minInteger( int a[], int size ) {
+    int min = a[0], i;
 
     for (i = 0; i < size; i++) {
         if (min > a[i]) min = a[i];
