@@ -3,6 +3,9 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 struct Point {
@@ -20,10 +23,11 @@ double distance(Point argA, Point argB);
 
 struct Triangle {
     Point a, b, c;
+    string color;
 
     Triangle(Point argA = {}, Point argB = {}, Point argC = {});
+    
     void print();
-
     double perimeter();
     double semiPerimeter();
     double area();
@@ -40,6 +44,38 @@ int main(void) {
     cout << "Semi-Perimeter: " << myTri.semiPerimeter() << endl;\
     cout << "Area: " << myTri.area() << endl;
 
+    // =======================================================================
+
+    vector<Triangle> randomTriangles;
+
+    // Outer For Loop is responsible for generating 50 instances of randomized Triangle objects
+    for (int i = 0; i < 50; i++) {
+
+        vector<Point> trianglePoints;
+        vector<string> colors = {"red", "orange", "yellow", "green", "blue", "indigo", "violet"};
+        
+        // Inner For Loop is responsible for generating 3 randomized Point objects
+        for (int j = 0; j < 3; j++) {
+
+            double x = rand() % 10;
+            double y = rand() % 10;
+
+            trianglePoints.push_back(Point(x, y));
+
+        }
+
+        // 
+        Triangle x(trianglePoints[0], trianglePoints[1], trianglePoints[2]);
+        x.color = colors[rand() % colors.size()];
+
+        randomTriangles.push_back(x);
+    }
+
+    for (int i = 0; i < randomTriangles.size(); i++) {
+        cout << "\nTriangle " << i+1 << endl;
+        randomTriangles[i].print();
+    }
+
 
     return(0);
 }
@@ -54,6 +90,7 @@ void Triangle::print() {
     a.print();
     b.print();
     c.print();
+    cout << color << endl;
 }
 
 double Triangle::perimeter() {
