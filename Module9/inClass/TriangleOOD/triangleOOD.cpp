@@ -6,10 +6,9 @@
 using namespace std;
 
 struct Point {
-    // properties
+    
     double x, y;
 
-    // methods
     Point(double argX = 0.0, double argY = 0.0);  // default constructor
     void print(void);
 
@@ -24,22 +23,22 @@ struct Triangle {
 
     Triangle(Point argA = {}, Point argB = {}, Point argC = {});
     void print();
+
+    double perimeter();
+    double semiPerimeter();
+    double area();
 };
 
 int main(void) {
 
-    Point A(3, 2);
-    A.print();
-    cout << "Distance to origin: " << A.distToOrigin() << endl;
+    Point A(-3, 2), B(3, 2), C(4, -5);
 
+    Triangle myTri(A, B, C);
 
-    Triangle x(Point(-2,1), Point(3,4), Point(2,1) );
-
-    x.print();
-
-    cout << "Distance between A and B: " << distance(x.a, x.b) << endl;
-    cout << "Distance between B and C: " << distance(x.b, x.c) << endl;
-    cout << "Distance between A and C: " << distance(x.a, x.c) << endl;
+    myTri.print();
+    cout << "Perimeter: " << myTri.perimeter() << endl;
+    cout << "Semi-Perimeter: " << myTri.semiPerimeter() << endl;\
+    cout << "Area: " << myTri.area() << endl;
 
 
     return(0);
@@ -57,12 +56,28 @@ void Triangle::print() {
     c.print();
 }
 
+double Triangle::perimeter() {
+    return distance(a, b) + distance(b, c) + distance(c, a);
+}
+
+double Triangle::semiPerimeter() {
+    return perimeter() / 2;
+}
+
+double Triangle::area() {
+    return sqrt( semiPerimeter() * (semiPerimeter() - distance(a, b)) * (semiPerimeter() - distance(b, c)) * (semiPerimeter() - distance(c, a)) );
+}
+
+
+
 double distance(Point argA, Point argB) {
+                    //   x2 - x1          +       y2 - y1
     return sqrt( pow(argB.x - argA.x,2) + pow(argB.y - argA.y,2) );
 }
 
 Point::Point(double argX, double argY) {
     x = argX;
+
     y = argY;
 }
 void Point::print(void) {
