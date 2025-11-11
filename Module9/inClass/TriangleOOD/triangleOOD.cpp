@@ -65,7 +65,8 @@ double Triangle::semiPerimeter() {
 }
 
 double Triangle::area() {
-    return sqrt( semiPerimeter() * (semiPerimeter() - distance(a, b)) * (semiPerimeter() - distance(b, c)) * (semiPerimeter() - distance(c, a)) );
+    double semiP = semiPerimeter();
+    return sqrt( semiP * (semiP - distance(a, b)) * (semiP - distance(b, c)) * (semiP - distance(c, a)) );
 }
 
 
