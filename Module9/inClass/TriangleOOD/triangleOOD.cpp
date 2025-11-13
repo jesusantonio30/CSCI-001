@@ -26,6 +26,7 @@ class Point {
 
         void print(void);
         double distToOrigin();
+        double randomize();
 };
 
 // regular c-type function
@@ -83,7 +84,7 @@ int main(void) {
         // Inner For Loop is responsible for generating 3 randomized Point objects
         for (int j = 0; j < 3; j++) {
 
-            trianglePoints.push_back(Point(rand() % 100, rand() % 100));
+            trianglePoints.push_back(Point(trianglePoints[i].randomize(), trianglePoints[i].randomize()));
 
         }
 
@@ -135,6 +136,10 @@ void Point::print(void) {
 
 double Point::distToOrigin() {
     return sqrt(pow(getX(), 2) + pow(getY(), 2));
+}
+
+double Point::randomize() {
+    return rand() % 100;
 }
 
 // ==================== TRIANGLES ====================================
