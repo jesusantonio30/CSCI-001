@@ -124,7 +124,6 @@ int Dog::humanAge() const {
 }
 
 // C-TYPE FUNCS
-
 void printDogKennel(const vector<Dog> &kennel) {
     for (int i = 0; i < kennel.size(); i++) {
         kennel[i].display();
