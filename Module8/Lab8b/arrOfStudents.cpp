@@ -11,10 +11,11 @@ struct Student {
     int id;
 
     // Methods
-    void capitalize();
     void printStudent();
     void addToGPA(double arg);
 };
+
+void capitalize(Student& arg);
 
 int main() {
 
@@ -57,7 +58,7 @@ int main() {
     cout << "\n\n======== Student Information ========" << endl;
 
     for (int i = 0; i < size; i++) {
-        studentArr[i].capitalize();
+        capitalize(studentArr[i]);
         cout << "\nStudent " << i + 1 << ": " << endl;
         studentArr[i].printStudent();
         cout << "\n=================================" << endl;
@@ -74,30 +75,30 @@ void Student::printStudent() {
     cout << "\nGPA: \t\t" << gpa << endl;
 }
 
-void Student::capitalize() {
+void capitalize(Student& arg) {
 
     // & is necessary since it doesn't create a copy of a value. Instead, it contains the address in memory where the variable or value is located in. 
     // If declared using a type, the variable name is just another alias of the original variable.
     // In this case, arg is an alias for my studentArr variable containing an array.
     // This allows us to only pass 8 bytes (size of an address) rather than whatever the size of a copy may be. Much more efficient.
 
-    firstName[0] = toupper(firstName[0]);
-    lastName[0] = toupper(lastName[0]);
-    school[0] = toupper(school[0]);
+    arg.firstName[0] = toupper(arg.firstName[0]);
+    arg.lastName[0] = toupper(arg.lastName[0]);
+    arg.school[0] = toupper(arg.school[0]);
     
-    for (int i = 0; i < firstName.size(); i++) {
-        if (firstName[i] == ' ') {
-            firstName[i + 1] = toupper(firstName[i + 1]);
+    for (int i = 0; i < arg.firstName.size(); i++) {
+        if (arg.firstName[i] == ' ') {
+            arg.firstName[i + 1] = toupper(arg.firstName[i + 1]);
         }
     }
-    for (int i = 0; i < lastName.size(); i++) {
-        if (lastName[i] == ' ') {
-            lastName[i + 1] = toupper(lastName[i + 1]);
+    for (int i = 0; i < arg.lastName.size(); i++) {
+        if (arg.lastName[i] == ' ') {
+            arg.lastName[i + 1] = toupper(arg.lastName[i + 1]);
         }
     }
-    for (int i = 0; i < school.size(); i++) {
-        if (school[i] == ' ') {
-            school[i + 1] = toupper(school[i + 1]);
+    for (int i = 0; i < arg.school.size(); i++) {
+        if (arg.school[i] == ' ') {
+            arg.school[i + 1] = toupper(arg.school[i + 1]);
         }
     }
 }
