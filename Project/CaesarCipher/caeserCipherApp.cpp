@@ -24,7 +24,7 @@ class CaesarCipher {
 
 int main() {
 
-    CaesarCipher x("Your Mom is Gay!", 13);
+    CaesarCipher x("hello world!", 13);
 
     cout << x.getEncrMsg() << endl;
 
@@ -73,17 +73,20 @@ int main() {
 
             int currIndex = int(secrMsg[i]) + getRotKey();
 
-            if (isupper(secrMsg[i]))
-                tempLowerCase = secrMsg[i];
-
             if (isblank(secrMsg[i]) || ispunct(secrMsg[i])) 
                 encryptedMessage += secrMsg[i];
-
+            
+            if (isalpha(currIndex)) {
+                if (currIndex < 96) {
+                    encryptedMessage += toupper(char(int(tolower(char(currIndex)))));
+                } else {
+                    encryptedMessage += char(int(secrMsg[i]) + getRotKey());
+                }
+            }
+            
             if (currIndex > 122) 
                 encryptedMessage += char( ( getRotKey() - (122 - int(secrMsg[i])) ) + 96 );
-            
-            if (isalpha(currIndex))
-                encryptedMessage += char(int(secrMsg[i]) + getRotKey());
+                
 
             
         }
