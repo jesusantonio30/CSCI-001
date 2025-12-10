@@ -65,6 +65,8 @@ int main() {
         return rotKey;
     }
 
+// METHODS
+
     string CaesarCipher::encrypt(string secrMsg) {
         string encryptedMessage = "";
 
