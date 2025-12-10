@@ -3,6 +3,7 @@
         ".gitignore": "ignore",
         "iostream": "cpp",
         "iomanip": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "string": "cpp"
     }
 }

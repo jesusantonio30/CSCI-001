@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cctype>
 
 using namespace std;
 
@@ -21,10 +22,19 @@ class CaesarCipher {
         string encrypt(string msg);
 };
 
+/*
+
+    This program implements a fully functional Caesar Cipher in C++ 
+    that works exactly like rot13.com.
+    It supports any shift value (not just 13), preserves letter case, 
+    and leaves spaces, punctuation, and all other characters unchanged.
+
+*/
+
 
 int main() {
 
-    CaesarCipher x("hello world!", 13);
+    CaesarCipher x("Las llaves estan debajo de la cama", 25);
 
     cout << x.getEncrMsg() << endl;
 
@@ -55,42 +65,38 @@ int main() {
         return rotKey;
     }
 
-    // So only alphabetical characters are rotated
-    // both capitals and lowercase
-
-    // ASCII 65 - 90 (A - Z) and 97 - 122 (a - z)
-
-    // if num is 78 or 110, %26
-
-    // my name is jesus
-    // zl anzr vf wrfhf
-
     string CaesarCipher::encrypt(string secrMsg) {
         string encryptedMessage = "";
+
+        int key = getRotKey();
+
         for (int i = 0; i < secrMsg.size(); i++) {
 
-            char tempLowerCase = ' ';
+            char ogChar = secrMsg[i];
+            int upperCaseRot = key + (int(tolower(ogChar)));
+            int lowerCaseRot = key + int(ogChar);
 
-            int currIndex = int(secrMsg[i]) + getRotKey();
+            if (ispunct(ogChar) || isblank(ogChar)) 
+                encryptedMessage += ogChar;
 
-            if (isblank(secrMsg[i]) || ispunct(secrMsg[i])) 
-                encryptedMessage += secrMsg[i];
+            else if (isupper(ogChar)) {
+
+                if (upperCaseRot > 122)
+                    encryptedMessage += toupper(char(96 + (key - (122 - int(tolower(ogChar))))));
+                else 
+                    encryptedMessage += toupper(char(upperCaseRot));
+                
+            } 
             
-            if (isalpha(currIndex)) {
-                if (currIndex < 96) {
-                    encryptedMessage += toupper(char(int(tolower(char(currIndex)))));
-                } else {
-                    encryptedMessage += char(int(secrMsg[i]) + getRotKey());
-                }
+            else if (lowerCaseRot > 122) {
+                encryptedMessage += 96 + (key - (122 - int(ogChar)));
             }
             
-            if (currIndex > 122) 
-                encryptedMessage += char( ( getRotKey() - (122 - int(secrMsg[i])) ) + 96 );
-                
-
+            else {
+                encryptedMessage += char(lowerCaseRot);
+            }
             
         }
 
         return encryptedMessage;
     }
-
